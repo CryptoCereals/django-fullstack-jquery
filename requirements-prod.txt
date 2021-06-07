@@ -1,0 +1,7 @@
+-r requirements.txt
+#Database
+psycopg2-binary==2.8.6
+
+#Deployment
+gunicorn==20.0.4
+supervisor==4.2.2

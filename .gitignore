@@ -1,0 +1,14 @@
+# Ignore migrations DJANGO
+**/migrations/*
+!**/migrations/__init__.py
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Static files
+static/*
+!static/package.json
+
+# Ignore DB
+*.sql

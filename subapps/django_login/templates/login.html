@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+{%load static%}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CryptIA</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'node_modules/admin-lte/dist/css/adminlte.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/admin-lte-extended.css' %}">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <style>
+    .form-control-feedback{
+      margin: -35px 10px;
+      font-size: 20px;
+      float: right;
+    }
+
+  </style>
+</head>
+<body class="hold-transition login-page dynamic_background">
+
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#">
+      <span style="font-size:56px;color:black"><b>CryptIA</b></span><br>
+      <span style="font-size:26px"><b>IA to manage cryptocurrencies</span>
+    </a>
+  </div>
+  <div class="login-box-body">
+    <!--<p class="login-box-msg">Access website</p>-->
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group has-feedback">
+        <input type="text" name="username" id="id_username" class="form-control" placeholder="Usuario">
+        <span class="fa fa-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" name="password" id="id_password" class="form-control" placeholder="Contraseña">
+        <span style="font-size:26px" class="fa fa-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          {%if websso == True %}
+          <a href="/login/websso/" type="submit" class="btn btn-primary btn-block btn-flat">Accéder par WebSSO</a>
+          {% endif %}
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4">
+          <button id="login" type="submit" class="btn btn-green btn-block btn-flat">Acceder</button>
+        </div>
+        <!-- /.col -->
+        {% if message %}
+         <div style="color:red" class="col-sm-12">
+          {{message}}
+        </div>
+        {% endif %}
+      </div>
+    </form>
+
+    <!--
+    <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+        Facebook</a>
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+        Google+</a>
+    </div>
+    <a href="#">I forgot my password</a><br>
+    <a href="register.html" class="text-center">Register a new membership</a>
+    -->
+
+  </div>
+</div>
+
+<!-- JS GLOBAL -->
+<script src="{% static 'plugins/jquery/jquery.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/iCheck/icheck.min.js' %}"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>
+</body>
+</html>
