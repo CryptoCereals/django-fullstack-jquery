@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class LoginConfig(AppConfig):
-    name = 'django_login'
+class OnepageConfig(AppConfig):
+    name = 'django_onepage'

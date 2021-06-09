@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import configparser
+from django.apps import AppConfig
 
 ####################################################################
 # GENERAL SETTINGS
@@ -38,12 +39,14 @@ else:
     DEBUG = False
 
 # SECURITY WARNING: Whitelist as minimum as possible to reduce security risks.
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = Config.get('DJANGO', 'ALLOWED_HOSTS').split(",")
 
 
 ####################################################################
 # DJANGO APPLICATIONS
 ####################################################################
+# Required for django >3.2 if not we need to add full path to each apps.py config name
+AppConfig.default = False
 
 
 def get_apps_definitions(apps_folder):
@@ -55,7 +58,8 @@ def get_apps_definitions(apps_folder):
     for full_path, apps, folders in os.walk(os.path.join(BASE_DIR, apps_folder)):
         if os.path.basename(full_path) == apps_folder:
             for app in apps:
-                app_path = f'{os.path.relpath(full_path, BASE_DIR).replace("/",".")}.{app}'
+                fix_path_windows_linux = os.path.relpath(full_path, BASE_DIR).replace("/",".").replace("\\",".")
+                app_path = f'{fix_path_windows_linux}.{app}'
                 app_definitions.append(app_path)
     return app_definitions
 
@@ -113,11 +117,13 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # DATABASES
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 ####################################################################
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 if ENV == 'DEV':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'database',
+            'NAME': 'database.db',
         }
     }
 elif ENV == 'PROD':
@@ -162,10 +168,13 @@ USE_TZ = True
 # on debug false, static files are took from root path
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 ####################################################################
-STATIC_ROOT = Config.get('STATIC', 'STATIC_ROOT'),
+MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-MEDIA_ROOT = Config.get('STATIC', 'MEDIA_ROOT'),
-MEDIA_URL = '/media/'
+STATIC_ROOT = Config.get('STATIC', 'STATIC_ROOT'),
+if ENV == 'DEV':
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+else:
+    MEDIA_ROOT = Config.get('STATIC', 'MEDIA_ROOT'),

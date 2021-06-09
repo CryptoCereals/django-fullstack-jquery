@@ -9,7 +9,10 @@ A subapp is any app create after project creation:
 | - | django_login | Control before accessing platform |
 | - | django_onepage | Django onepage with ajax(Jquery) |
 
-
+## Bootstrap theme
+We use admin-lte as base for the front-end part.
+Check this website to know how it works:
+https://adminlte.io/themes/v3/pages/UI/general.html
 
 ## Development
 You only need to have the correct version of Python to start to develop.
@@ -25,8 +28,10 @@ pip install -r requirements-dev.txt
 ```
 Modify private.ini for your environnement
 
-Create admin user or reset it
+First configurations steps and then create admin user
 ```bash
+python manage.py makemigrations
+python manage.py migrate
 python manage.py createsuperuser
 ```
 

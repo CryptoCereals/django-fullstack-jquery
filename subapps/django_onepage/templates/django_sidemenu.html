@@ -1,8 +1,14 @@
 {% load static %}
  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar" style="padding-top: 44px">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-no-expand">
+      <!-- Brand Logo -->
+      <a href="/" class="brand-link">
+          <img src="{% static 'img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+          <span class="brand-text font-weight-light" style="margin:auto">pplication</span>
+      </a>
+
     <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar" id="sidemenu">
+    <div class="sidebar" id="sidemenu">
       <!-- Sidebar user panel
       <div class="user-panel">
         <div class="pull-left image">
@@ -26,10 +32,20 @@
       </form>-->
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li id="basemaps"><a href="#"><i class="fa fa-map"></i> <span>Mapas de fondo</span></a></li>
-        <li id="layerlist"><a href="#"><i class="fa fa-layer-group"></i> <span>Lista de capas</span></a></li>
+      <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" style="overflow-x:hidden">
+        <li class="nav-item" id="basemaps">
+            <a href="#" class="nav-link active">
+                <i class="fa fa-home"></i> <p>Home</p>
+            </a>
+        </li>
+          <li class="nav-item" id="layerlist">
+            <a href="#" class="nav-link">
+                <i class="fa fa-map"></i> <p>Maps</p>
+            </a>
+        </li>
       </ul>
-    </section>
+      </nav>
+    </div>
     <!-- /.sidebar -->
   </aside>

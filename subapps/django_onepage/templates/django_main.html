@@ -4,17 +4,15 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Blank Page</title>
+  <title>WebAPP</title>
+  <link rel="shortcut icon" type="image/jpg" href="{% static 'favicon.ico' %}"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Tell the browser to be responsive to screen width -->
 
 
   <!-- CSS LIBRARIES-->
   <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css' %}">
   <link rel="stylesheet" href="{% static 'node_modules/@fortawesome/fontawesome-free/css/all.css' %}">
-  <link rel="stylesheet" href="{% static 'node_modules/admin-lte/dist/css/AdminLTE.css' %}">
-  <link rel="stylesheet" href="{% static 'node_modules/admin-lte/dist/css/skins/_all-skins.css' %}">
-  <link rel="stylesheet" href="{% static 'node_modules/ionicons/dist/css/ionicons.css' %}">
-  <link rel="stylesheet" href="{% static 'css/admin-lte-extended.css' %}">
+  <link rel="stylesheet" href="{% static 'node_modules/admin-lte/dist/css/adminlte.css' %}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700">
   {% block css_local %} {% endblock %}
 
@@ -230,9 +228,7 @@
 <!-- JS LIBRARIES-->
 <script src="{% static 'node_modules/admin-lte/plugins/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.js' %}"></script>
-<script src="{% static 'node_modules/admin-lte/bower_components/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
-<script src="{% static 'node_modules/admin-lte/dist/js/adminlte.min.js' %}"></script>
-<script src="{% static 'node_modules/admin-lte/dist/js/demo.js' %}"></script>
+<script src="{% static 'node_modules/admin-lte/dist/js/adminlte.js' %}"></script>
 {% block js_local %} {% endblock %}
 
 </body>

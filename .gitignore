@@ -9,6 +9,8 @@ __pycache__/
 # Static files
 static/*
 !static/package.json
+!static/favicon.ico
+!static/img/*
 
 # Ignore DB
-*.sql
+database.db
